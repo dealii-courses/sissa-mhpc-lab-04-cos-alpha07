@@ -91,7 +91,8 @@ the manufactured solution `u(x,y)=sin(pi*x)*cos(pi*y)`. Add a method
 `compute_error()` to the `Poisson` class, that calls the
 `ParsedConvergenceTable::error_from_exact` method with the `exact_solution`
 function you created above. Make sure you output both the L2 and H1 error in
-text format to a file.
+text format to a file. Play with the `jupyter` notebook
+`manufactured_solutions.ipynb` to construct non-trivial exact solutions.
 
 8. Add a parameter `Stiffness coefficient expression` and the corresponding
 members to the `Poisson` class, so that the problem you will be solving is 
