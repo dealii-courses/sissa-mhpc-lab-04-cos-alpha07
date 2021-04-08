@@ -17,11 +17,11 @@
  *          Guido Kanschat, 2011
  *          Luca Heltai, 2021
  */
-#include "step-3.h"
+#include "poisson.h"
 
 using namespace dealii;
 
-Step3::Step3()
+Poisson::Poisson()
   : fe(1)
   , dof_handler(triangulation)
 {}
@@ -29,7 +29,7 @@ Step3::Step3()
 
 
 void
-Step3::make_grid()
+Poisson::make_grid()
 {
   GridGenerator::hyper_cube(triangulation, -1, 1);
   triangulation.refine_global(5);
@@ -40,7 +40,7 @@ Step3::make_grid()
 
 
 void
-Step3::setup_system()
+Poisson::setup_system()
 {
   dof_handler.distribute_dofs(fe);
   std::cout << "Number of degrees of freedom: " << dof_handler.n_dofs()
@@ -56,7 +56,7 @@ Step3::setup_system()
 
 
 void
-Step3::assemble_system()
+Poisson::assemble_system()
 {
   QGauss<2>          quadrature_formula(fe.degree + 1);
   FEValues<2>        fe_values(fe,
@@ -107,7 +107,7 @@ Step3::assemble_system()
 
 
 void
-Step3::solve()
+Poisson::solve()
 {
   SolverControl            solver_control(1000, 1e-12);
   SolverCG<Vector<double>> solver(solver_control);
@@ -117,7 +117,7 @@ Step3::solve()
 
 
 void
-Step3::output_results() const
+Poisson::output_results() const
 {
   DataOut<2> data_out;
   data_out.attach_dof_handler(dof_handler);
@@ -130,7 +130,7 @@ Step3::output_results() const
 
 
 void
-Step3::run()
+Poisson::run()
 {
   make_grid();
   setup_system();

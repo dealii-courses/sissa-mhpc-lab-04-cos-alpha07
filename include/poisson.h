@@ -19,8 +19,8 @@
  */
 
 // Make sure we don't redefine things
-#ifndef step3_include_file
-#define step3_include_file
+#ifndef poisson_include_file
+#define poisson_include_file
 
 #include <deal.II/base/function.h>
 #include <deal.II/base/quadrature_lib.h>
@@ -49,13 +49,13 @@
 #include <iostream>
 
 // Forward declare the tester class
-class Step3Tester;
+class PoissonTester;
 
 using namespace dealii;
-class Step3
+class Poisson
 {
 public:
-  Step3();
+  Poisson();
   void
   run();
 
@@ -79,7 +79,7 @@ protected:
   Vector<double>       solution;
   Vector<double>       system_rhs;
 
-  friend class Step3Tester;
+  friend class PoissonTester;
 };
 
 #endif
